@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { MovieState } from "../movieState";
+import { motion } from "framer-motion";
+import { pageAnimation } from "../animation";
 
 const MovieDetail = () => {
   const history = useHistory();
@@ -17,9 +19,14 @@ const MovieDetail = () => {
   console.log(movie);
 
   return (
-    <>
+    <div>
       {movie && (
-        <Details>
+        <Details
+          variants={pageAnimation}
+          exit="exit"
+          initial="hidden"
+          animate="show"
+        >
           <HeadLine>
             <h2>{movie.title}</h2>
             <img src={movie.mainImg} alt="Movie" />
@@ -34,15 +41,15 @@ const MovieDetail = () => {
             ))}
           </Awards>
           <ImageDisplay>
-                <img src={movie.secondaryImg} alt="Movie" />
+            <img src={movie.secondaryImg} alt="Movie" />
           </ImageDisplay>
         </Details>
       )}
-    </>
+    </div>
   );
 };
 
-const Details = styled.div`
+const Details = styled(motion.div)`
   color: white;
 `;
 
@@ -64,40 +71,40 @@ const HeadLine = styled.div`
 `;
 
 const Awards = styled.div`
-  min-height:80vh;
-  display:flex;
-  margin:5rem 10rem;
+  min-height: 80vh;
+  display: flex;
+  margin: 5rem 10rem;
   align-items: center;
   justify-content: space-around;
 `;
 
 const AwardStyle = styled.div`
   padding: 5rem;
-  h3 { 
-      font-size:2rem;
+  h3 {
+    font-size: 2rem;
   }
   .line {
-      width:90%;
-      background:#23d997;
-      height: 0.5rem;
-      margin: 1rem 0rem;
+    width: 90%;
+    background: #23d997;
+    height: 0.5rem;
+    margin: 1rem 0rem;
   }
   p {
-      padding:2rem 0rem;
+    padding: 2rem 0rem;
   }
 `;
 
 const ImageDisplay = styled.div`
-  min-height:50vh;
+  min-height: 50vh;
   img {
-      width:100%;
-      height:100vh;
-      object-fit:cover;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
   }
 `;
 
 // Award Component
-const Award = ({title,description}) => {
+const Award = ({ title, description }) => {
   return (
     <AwardStyle>
       <h3>{title}</h3>
