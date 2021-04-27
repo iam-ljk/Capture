@@ -45,7 +45,7 @@ export const photoAnim = {
     transition: {
       ease: "easeOut",
       duration: 1,
-      delay:0.5,
+      delay: 0.5,
     },
   },
 };
@@ -68,9 +68,34 @@ export const slider = {
 };
 
 export const sliderContainer = {
-    hidden: {opacity: 1},
-    show: { 
-        opacity: 1,
-        transition: {staggerChildren: 0.15,ease:"easeOut"}
-    }
-}
+  hidden: { opacity: 1 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, ease: "easeOut" },
+  },
+};
+
+export const reveal = {
+  hidden: {
+    opacity: 0,
+    scale: 0.9,
+    transition: {duration:0.5}
+  },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+
+export const swoopAdoop = {
+  hidden: {width:'-100%', transition:{duration: 1}, },
+  show: {
+    width:'100%',
+    skew: "0deg",
+    transition: { ease: "easeOut", duration: 1 },
+  },
+};
